@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.github.kripaliz</groupId>
+		<artifactId>unifiedbdd-automation-parent</artifactId>
+		<version>0.0.2</version>
+	</parent>
+	<artifactId>unifiedbdd-automation-suite-sample</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<properties>
+		<cucumber.glue>com.github.kripaliz.testing</cucumber.glue>
+		<cucumber.tags>~@wip</cucumber.tags>
+		<perCoreThreadCount>false</perCoreThreadCount>
+		<threadCount>1</threadCount>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.github.temyers</groupId>
+				<artifactId>cucumber-jvm-parallel-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>generateRunners</id>
+						<phase>generate-test-sources</phase>
+						<goals>
+							<goal>generateRunners</goal>
+						</goals>
+						<configuration>
+							<parallelScheme>SCENARIO</parallelScheme>
+							<plugins>
+								<plugin>
+									<name>json</name>
+								</plugin>
+								<plugin>
+									<name>io.qameta.allure.cucumber2jvm.AllureCucumber2Jvm</name>
+									<noOutput>true</noOutput>
+								</plugin>
+							</plugins>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

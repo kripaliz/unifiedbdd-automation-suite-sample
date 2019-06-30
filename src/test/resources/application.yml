@@ -1,0 +1,52 @@
+spring.main.sources: com.github.kripaliz.testing
+
+spring.profiles.active: PROD,chrome
+
+testData:
+  abc: abcd
+
+---
+
+spring.profiles: chrome
+webdriver:
+  type: chrome
+
+---
+
+spring.profiles: localGridChrome
+webdriver:
+  type: remote
+  url: http://localhost:4444/wd/hub
+  desiredCapabilities:
+    browserName: chrome
+
+---
+
+spring.profiles: androidChrome
+webdriver:
+  type: android
+  url: http://0.0.0.0:4723/wd/hub
+  desiredCapabilities:
+    deviceName: Android
+    platformName: Android
+    browserName: Chrome
+
+---
+
+#This is just a sample. SIT does not exist for this site
+spring.profiles: SIT
+testEnvironment:
+  url: https://sit.timetracker.anuko.com/
+
+---
+
+#This is just a sample. UAT does not exist for this site
+spring.profiles: UAT
+testEnvironment:
+  url: https://uat.timetracker.anuko.com/ 
+
+---
+
+spring.profiles: PROD
+testEnvironment:
+  url: https://timetracker.anuko.com/
